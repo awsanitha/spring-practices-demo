@@ -89,7 +89,7 @@ class ReadingJsonServiceTest {
                 () -> underTest.getCountriesByRegionType(TEST_NON_SUPPORTED_REGION_TYPE));
         assertNotNull(exception);
         assertEquals(
-                String.format("Not supported region %d", TEST_NON_SUPPORTED_REGION_TYPE),
+            "Not supported region %d".formatted(TEST_NON_SUPPORTED_REGION_TYPE),
                 exception.getMessage());
     }
 }

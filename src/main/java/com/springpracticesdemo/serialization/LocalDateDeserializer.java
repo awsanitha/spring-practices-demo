@@ -22,13 +22,13 @@ public class LocalDateDeserializer extends JsonDeserializer<LocalDate> {
             try {
                 return LocalDate.parse(date.substring(0, MINIMUM_DATE_LENGTH));
             } catch (Exception e) {
-                log.error("{} - {}", p.getCurrentName(), e.getMessage(), e);
+                log.error("{} - {}", p.currentName(), e.getMessage(), e);
 
                 throw new BadRequestException(e.getMessage());
             }
         }
 
         throw new BadRequestException(
-                String.format("Invalid format of %s: [%s]", p.getCurrentName(), date));
+            "Invalid format of %s: [%s]".formatted(p.currentName(), date));
     }
 }

@@ -1,6 +1,7 @@
 package com.springpracticesdemo.serialization;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 public class LocalDateTimeSerializer extends StdSerializer<LocalDateTime> {
 
+    @Serial
     private static final long serialVersionUID = 1395580540249925728L;
 
     public LocalDateTimeSerializer() {

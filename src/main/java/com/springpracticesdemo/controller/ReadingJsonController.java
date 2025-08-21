@@ -6,7 +6,6 @@ import static com.springpracticesdemo.configuration.WebPath.PATH_COUNTRIES_REGIO
 
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +35,6 @@ public class ReadingJsonController {
 
     private final ReadingJsonService readingJsonService;
 
-    @Autowired
     public ReadingJsonController(ReadingJsonService readingJsonService) {
         this.readingJsonService = readingJsonService;
     }

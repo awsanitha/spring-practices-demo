@@ -4,7 +4,6 @@ import static com.springpracticesdemo.configuration.WebPath.API_VERSION_1;
 import static com.springpracticesdemo.configuration.WebPath.PATH_FUTURE_DEVICES;
 import static com.springpracticesdemo.configuration.WebPath.PATH_REMOVE_FUTURE_DEVICE;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -43,7 +42,6 @@ public class DeviceController {
 
     private final FutureDeviceService futureDeviceService;
 
-    @Autowired
     public DeviceController(FutureDeviceService futureDeviceService) {
         this.futureDeviceService = futureDeviceService;
     }

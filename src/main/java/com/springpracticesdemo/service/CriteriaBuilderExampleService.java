@@ -2,7 +2,6 @@ package com.springpracticesdemo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +19,6 @@ public class CriteriaBuilderExampleService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    @Autowired
     public CriteriaBuilderExampleService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;

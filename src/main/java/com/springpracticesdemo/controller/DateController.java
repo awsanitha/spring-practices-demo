@@ -3,7 +3,6 @@ package com.springpracticesdemo.controller;
 import static com.springpracticesdemo.configuration.WebPath.API_VERSION_1;
 import static com.springpracticesdemo.configuration.WebPath.PATH_DATE;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +27,6 @@ public class DateController {
 
     private final DateService dateService;
 
-    @Autowired
     public DateController(DateService dateService) {
         this.dateService = dateService;
     }

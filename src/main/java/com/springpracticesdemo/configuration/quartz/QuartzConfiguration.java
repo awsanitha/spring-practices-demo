@@ -1,6 +1,7 @@
 package com.springpracticesdemo.configuration.quartz;
 
 import org.quartz.Trigger;
+import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitialization;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
@@ -23,6 +24,7 @@ public class QuartzConfiguration {
      * @return SchedulerFactoryBean configured for the AutoPlanScheduler.
      */
     @Bean
+    @DependsOnDatabaseInitialization
     public SchedulerFactoryBean schedulerFactory(DataSource dataSource, List<Trigger> cronTriggers) {
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
         schedulerFactoryBean.setDataSource(dataSource);
