@@ -1,6 +1,5 @@
 package com.springpracticesdemo.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.info.GitInfoContributor;
 import org.springframework.boot.info.GitProperties;
@@ -16,7 +15,6 @@ public class HistoryLinkProvidingGitInfoContributor extends GitInfoContributor {
 
     public static final String KEY_FOR_LINK = "history";
 
-    @Autowired
     public HistoryLinkProvidingGitInfoContributor(GitProperties properties) {
         super(properties);
     }

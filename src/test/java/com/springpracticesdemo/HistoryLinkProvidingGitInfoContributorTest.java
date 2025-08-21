@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -21,6 +22,8 @@ import com.springpracticesdemo.configuration.HistoryLinkProvidingGitInfoContribu
  */
 class HistoryLinkProvidingGitInfoContributorTest {
 
+    private AutoCloseable mocks;
+
     private static final String GIT_URL = "https://github.com/myrepo/";
 
     @Mock
@@ -33,7 +36,7 @@ class HistoryLinkProvidingGitInfoContributorTest {
 
     @BeforeEach
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        mocks = MockitoAnnotations.openMocks(this);
         contributor = new HistoryLinkProvidingGitInfoContributor(gitProperties);
     }
 
@@ -70,5 +73,10 @@ class HistoryLinkProvidingGitInfoContributorTest {
         // Assert
         assertFalse(content.containsKey("history"));
         assertEquals("value1", content.get("key1"));
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        mocks.close();
     }
 }

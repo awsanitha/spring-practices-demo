@@ -1,5 +1,6 @@
 package com.springpracticesdemo.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
@@ -14,6 +15,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class FutureDevice extends Auditable implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 2613900115897578605L;
 
     @Id

@@ -1,6 +1,5 @@
 package com.springpracticesdemo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -29,7 +28,6 @@ public class FutureDeviceService {
 
     private final ProcessEventPublisher applicationEventPublisher;
 
-    @Autowired
     public FutureDeviceService(
             FutureDeviceRepository futureDeviceRepository, FutureDeviceMapper futureDeviceMapper,
             UserRepository userRepository,
@@ -71,7 +69,7 @@ public class FutureDeviceService {
      */
     public void createFutureDevice(FutureDeviceDTO futureDeviceDTO) {
         userRepository.findById(futureDeviceDTO.getCustomerId()).orElseThrow(() -> {
-            String errMsg = String.format("There is no customer with id %s", futureDeviceDTO.getCustomerId());
+            String errMsg = "There is no customer with id %s".formatted(futureDeviceDTO.getCustomerId());
             log.error(errMsg);
             return new ResourceNotFoundException(errMsg);
         });
@@ -79,11 +77,10 @@ public class FutureDeviceService {
         try {
             futureDeviceRepository.save(futureDevice);
         } catch (DataIntegrityViolationException e) {
-            String errMsg = String.format(
-                    "Combination with serial number %s,productId %s and customerId %d already exists",
-                    futureDeviceDTO.getSerialNumber(),
-                    futureDeviceDTO.getProductId(),
-                    futureDeviceDTO.getCustomerId());
+            String errMsg = "Combination with serial number %s,productId %s and customerId %d already exists".formatted(
+                futureDeviceDTO.getSerialNumber(),
+                futureDeviceDTO.getProductId(),
+                futureDeviceDTO.getCustomerId());
             log.error(errMsg);
             throw new ConflictException(errMsg);
         }
@@ -100,7 +97,7 @@ public class FutureDeviceService {
             .findById(id)
             .orElseThrow(
                     () -> {
-                        String errMsg = String.format("No future device found for id: %d", id);
+                        String errMsg = "No future device found for id: %d".formatted(id);
                         log.error(errMsg);
                         throw new ResourceNotFoundException(errMsg);
                     });

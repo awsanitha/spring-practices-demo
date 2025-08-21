@@ -2,7 +2,6 @@ package com.springpracticesdemo.service;
 
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springpracticesdemo.dto.CountryDTO;
@@ -15,7 +14,6 @@ public class ReadingJsonService {
 
     private final CountryStorage countryStorage;
 
-    @Autowired
     public ReadingJsonService(CountryStorage countryStorage) {
         this.countryStorage = countryStorage;
     }
@@ -38,7 +36,7 @@ public class ReadingJsonService {
         case COUNTRIES_FRENCH_OVERSEAS:
             return countryStorage.getCountriesInFrenchOverseasRegion();
         default:
-            throw new BadRequestException(String.format("Not supported region %s", requestedRegion));
+            throw new BadRequestException("Not supported region %s".formatted(requestedRegion));
         }
     }
 }

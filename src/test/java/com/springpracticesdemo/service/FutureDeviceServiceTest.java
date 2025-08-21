@@ -120,7 +120,7 @@ class FutureDeviceServiceTest {
 
         // Assert
         assertEquals(
-                String.format("There is no customer with id %d", futureDeviceDTO.getCustomerId()),
+            "There is no customer with id %d".formatted(futureDeviceDTO.getCustomerId()),
                 thrown.getMessage());
     }
 
@@ -139,11 +139,10 @@ class FutureDeviceServiceTest {
         // Assert
         assertNotNull(thrown);
         assertEquals(
-                String.format(
-                        "Combination with serial number %s,productId %s and customerId %d already exists",
-                        futureDeviceDTO.getSerialNumber(),
-                        futureDeviceDTO.getProductId(),
-                        futureDeviceDTO.getCustomerId()),
+            "Combination with serial number %s,productId %s and customerId %d already exists".formatted(
+                futureDeviceDTO.getSerialNumber(),
+                futureDeviceDTO.getProductId(),
+                futureDeviceDTO.getCustomerId()),
                 thrown.getMessage());
     }
 
